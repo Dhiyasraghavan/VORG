@@ -1,0 +1,140 @@
+/* Global premium styling for vorg */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", "SF Pro Text",
+    "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top left, #2b2d3f 0, #0b0c18 45%, #050510 100%);
+  color: #bfc0d1;
+  min-height: 100vh;
+}
+
+/* Futuristic background grid */
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.25;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: -2;
+}
+
+.bg-radial-spot {
+  position: fixed;
+  width: 480px;
+  height: 480px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(0, 111, 30, 0.45), transparent 60%);
+  filter: blur(2px);
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bg-radial-spot.spot-1 {
+  top: -120px;
+  left: -80px;
+}
+
+.bg-radial-spot.spot-2 {
+  bottom: -160px;
+  right: -40px;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 10, 24, 0.9);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #4f5c40, #a0b48e);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #a0b48e, #c7d7aa);
+}
+
+/* Section reveal animation utility */
+.section-gradient-border {
+  position: relative;
+}
+
+.section-gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    120deg,
+    rgba(130, 150, 114, 0.7),
+    rgba(148, 163, 184, 0.2),
+    rgba(130, 150, 114, 0.7)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+
+.floating-orbit {
+  position: absolute;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: 0 0 40px rgba(130, 150, 114, 0.4);
+  animation: orbit 18s linear infinite;
+}
+
+.floating-orbit--slow {
+  animation-duration: 26s;
+}
+
+@keyframes orbit {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(20px, -20px, 0) rotate(180deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(360deg);
+  }
+}
+
+/* Subtle card hover */
+.card-hover-lift {
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease,
+    border-color 220ms ease;
+}
+
+.card-hover-lift:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.65);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
