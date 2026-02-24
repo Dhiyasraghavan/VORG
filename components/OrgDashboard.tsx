@@ -336,7 +336,9 @@ export const OrgDashboard: React.FC<OrgDashboardProps> = ({ org, onNavigate }) =
       <VolunteersListModal
         isOpen={isVolModalOpen}
         onClose={() => setIsVolModalOpen(false)}
-        volunteers={volunteers}
+        volunteers={volunteers.filter(vol =>
+          events.some(event => event.acceptedVolunteers?.includes(vol.id))
+        )}
         events={events}
         onRemove={handleRemoveVolunteer}
       />
